@@ -1,0 +1,11 @@
+api:
+  env: 'dev'
+  port: 3000
+database:
+  dbName: ''
+  host: localhost
+  password: ''
+  port: 5432
+  user: ''
+jwt:
+  secret: ''
