@@ -1,6 +1,7 @@
 package server
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -23,9 +24,11 @@ func NewServer() *Server {
 func (s *Server) Init() {
 	log.Info().Msg("Init API")
 
+	s.cfg = config.LoadConfig()
+
 	s.InitHandlers(s.chi)
 
 	log.Info().Msg("Handlers Mapped")
 
-	http.ListenAndServe(":3000", s.chi)
+	http.ListenAndServe(fmt.Sprintf(":%d", s.cfg.Api.Port), s.chi)
 }
